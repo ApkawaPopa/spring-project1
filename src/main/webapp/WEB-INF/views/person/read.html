@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр данных человека</title>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>ФИО</td>
+                <td th:text="${person.getFullName()}"></td>
+            </tr>
+            <tr>
+                <td>Год рождения</td>
+                <td th:text="${person.getBirthYear()}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <p th:text="${!books.isEmpty()} ? 'Список книг:' : 'Человек пока не взял ни одной книги'"></p>
+    <ul th:if="${!books.isEmpty()}">
+        <li th:each="book : ${books}" th:text="${book.getTitle()}"></li>
+    </ul>
+
+    <hr>
+
+    <form th:method="get" th:action="@{/people/{id}/update(id=${person.getId()})}">
+        <input type="submit" value="Редактировать данные человека">
+    </form>
+    <form th:method="delete" th:action="@{/people/{id}(id=${person.getId()})}">
+        <input type="submit" value="Удалить человека">
+    </form>
+</body>
+</html>

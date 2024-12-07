@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновление данных человека</title>
+</head>
+<body>
+    <form th:method="patch" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+        <label for="fullName"></label>
+        <input type="text" id="fullName" th:field="*{fullName}">
+        <p style="color: red" th:errors="*{fullName}" th:if="${#fields.hasErrors('fullName')}"></p>
+        <br>
+
+        <label for="birthYear"></label>
+        <input type="number" id="birthYear" th:field="*{birthYear}">
+        <p style="color: red" th:errors="*{birthYear}" th:if="${#fields.hasErrors('birthYear')}"></p>
+        <br>
+
+        <input type="submit" value="Обновить данные человека">
+    </form>
+</body>
+</html>

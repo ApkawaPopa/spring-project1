@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр всех людей</title>
+</head>
+<body>
+    <form th:method="get" th:action="@{/people/create}">
+        <input type="submit" value="Добавить человека">
+    </form>
+
+    <hr>
+
+    <ul>
+        <li th:each="person : ${people}">
+            <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFullName()}"></a>
+        </li>
+    </ul>
+</body>
+</html>
